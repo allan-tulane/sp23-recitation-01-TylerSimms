@@ -1,6 +1,6 @@
 # CMPS 2200  Recitation 01
 
-**Name (Team Member 1):**_________________________  
+**Name (Team Member 1):** Tyler Simms  
 **Name (Team Member 2):**_________________________
 
 In this recitation, we will investigate asymptotic complexity. Additionally, we will get familiar with the various technologies we'll use for collaborative coding.
@@ -49,10 +49,12 @@ We'll compare the running times of `linear_search` and `binary_search` empirical
 - [ ] 4. Describe the worst case input value of `key` for `linear_search`? for `binary_search`? 
 
 **TODO: your answer goes here**
+The worst case input value of 'key' for 'linear_search' is the final list element or a value that is not in the list at all because the function has to search the entire list. The worst case input value of 'key' for 'binary_search' is a value that is not in the list at all. If the value is not in the list, the function is guaranteed to perform the maximum number of searches.
 
 - [ ] 5. Describe the best case input value of `key` for `linear_search`? for `binary_search`? 
 
 **TODO: your answer goes here**
+The best case input value of 'key' for 'linear_search' is the first list element because the function only has to search one element. The best case input value of 'key' for 'binary_search' is the middle list element because this element is the first one that the function searches.
 
 - [ ] 6. Complete the `time_search` function to compute the running time of a search function. Note that this is an example of a "higher order" function, since one of its parameters is another function.
 
@@ -61,12 +63,22 @@ We'll compare the running times of `linear_search` and `binary_search` empirical
 - [ ] 8. Call `print_results(compare_search())` and paste the results here:
 
 **TODO: add your timing results here**
+|            n |   linear |   binary |
+|--------------|----------|----------|
+|       10.000 |    0.005 |    0.017 |
+|      100.000 |    0.009 |    0.005 |
+|     1000.000 |    0.091 |    0.012 |
+|    10000.000 |    0.870 |    0.010 |
+|   100000.000 |    8.815 |    0.018 |
+|  1000000.000 |  238.730 |    0.041 |
+| 10000000.000 | 1846.271 |    0.044 |
 
 - [ ] 9. The theoretical worst-case running time of linear search is $O(n)$ and binary search is $O(log_2(n))$. Do these theoretical running times match your empirical results? Why or why not?
 
 **TODO: your answer goes here**
+These theoretical running times do not match the empirical results very closely. The word theoretical is important. In theory, these worst-case running times are accurate. However, in reality, the empirical times are much faster because the power of the computer allows these searches to occur in a fraction of the theoretical worst-case times. If the values of n were significantly larger, the theoretical worst-case running times would match the empirical results more closely.
 
 - [ ] 10. Binary search assumes the input list is already sorted. Assume it takes $\Theta(n^2)$ time to sort a list of length $n$. Suppose you know ahead of time that you will search the same list $k$ times. 
-  + What is worst-case complexity of searching a list of $n$ elements $k$ times using linear search? **TODO: your answer goes here**
-  + For binary search? **TODO: your answer goes here**
-  + For what values of $k$ is it more efficient to first sort and then use binary search versus just using linear search without sorting? **TODO: your answer goes here**
+  + What is worst-case complexity of searching a list of $n$ elements $k$ times using linear search? **TODO: your answer goes here** The worst-case complexity is $O(n*k)$.
+  + For binary search? **TODO: your answer goes here** The worst-case complexity is $O(n^2 + k*log_2(n))$ because binary search has to first sort the input list.
+  + For what values of $k$ is it more efficient to first sort and then use binary search versus just using linear search without sorting? **TODO: your answer goes here** When the value of $n$ is 10, first sorting and then using binary search becomes more efficient than just using linear search without sorting once the value of $k$ reaches 15. The value of $k$ does not need to get very large before binary search becomes more efficient than linear search.
